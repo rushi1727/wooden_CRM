@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-ink-50 text-ink-800 font-sans text-[13.5px];
+  }
+  ::selection {
+    @apply bg-brand-200 text-ink-900;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd2dc transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  *::-webkit-scrollbar-thumb {
+    @apply bg-ink-200 rounded-full;
+  }
+}
+
+@layer components {
+  .surface {
+    @apply bg-white border border-ink-200/80 rounded-lg shadow-card;
+  }
+  .surface-flat {
+    @apply bg-white border border-ink-200/80 rounded-lg;
+  }
+  .page-title {
+    @apply text-[22px] leading-7 font-semibold tracking-tight text-ink-900;
+  }
+  .section-title {
+    @apply text-[15px] font-semibold text-ink-900 tracking-tight;
+  }
+  .label {
+    @apply block text-[12px] font-medium text-ink-600 mb-1.5;
+  }
+  .input-base {
+    @apply w-full h-9 rounded-md border border-ink-200 bg-white px-3 text-[13px] text-ink-800 placeholder:text-ink-400
+      focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition disabled:bg-ink-50 disabled:text-ink-400;
+  }
+  .table-base {
+    @apply w-full text-left border-collapse;
+  }
+  .table-base thead th {
+    @apply bg-ink-50/80 text-ink-500 text-[11px] font-semibold uppercase tracking-wider px-4 py-2.5 border-b border-ink-200 whitespace-nowrap;
+  }
+  .table-base tbody td {
+    @apply px-4 py-3 border-b border-ink-100 text-ink-700 align-middle;
+  }
+  .table-base tbody tr:hover {
+    @apply bg-brand-50/40;
+  }
+  .link {
+    @apply text-brand-700 font-medium hover:text-brand-800 hover:underline underline-offset-2;
+  }
+  .kpi-value {
+    @apply text-[24px] leading-8 font-semibold tracking-tight text-ink-900 tabular-nums;
+  }
+  .divider {
+    @apply h-px w-full bg-ink-100;
+  }
+}
+
+/* Hide number input spinners for cleaner ERP forms */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+@media print {
+  .no-print { display: none !important; }
+  .print-surface { box-shadow: none !important; border: none !important; }
+}
